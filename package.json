@@ -8,10 +8,10 @@
     "type": "git",
     "url": "https://github.com/iamalipe/url-shortener.git"
   },
-  "description": "Large URL into short URL",
-  "homepage": "https://abhiseck.vercel.app/",
+  "description": "A Simple URL Shortener. Convert your Large URL into short URL",
+  "homepage": "https://url-shortener-tdy0.onrender.com/",
   "private": true,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "scripts": {
     "dev": "nodemon main.ts",
     "build": "tsc",
