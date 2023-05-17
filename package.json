@@ -1,20 +1,36 @@
 {
-  "name": "url_shortener",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "devStart": "nodemon server.js"
+  "name": "url-shortener",
+  "author": {
+    "name": "Abhiseck Bhattacharya",
+    "email": "Abhiseck@outlook.com"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iamalipe/url-shortener.git"
+  },
+  "description": "Large URL into short URL",
+  "homepage": "https://abhiseck.vercel.app/",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "nodemon main.ts",
+    "build": "tsc",
+    "start": "node ./dist/main.js",
+    "postinstall": "npm run build"
+  },
   "dependencies": {
-    "ejs": "^3.1.5",
-    "express": "^4.17.1",
-    "mongoose": "^5.10.6",
-    "shortid": "^2.2.15"
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "mongoose": "^7.1.1",
+    "shortid": "^2.2.16"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "@types/express": "^4.17.17",
+    "@types/node": "^20.1.7",
+    "@types/shortid": "^0.0.29",
+    "nodemon": "^2.0.22",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
   }
 }

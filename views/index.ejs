@@ -4,22 +4,144 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
-    />
-    <title>Document</title>
+    <meta name="description" content="URL Shortener" />
+    <meta name="keywords" content="URL Shortener" />
+    <meta name="author" content="Abhiseck Bhattacharya" />
+    <title>URL Shortener</title>
+    <style>
+      a {
+        text-decoration: none;
+        color: unset;
+      }
+      body {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+      .container {
+        margin: 0 auto;
+        max-width: 1000px;
+        width: 100%;
+      }
+      .title {
+        text-align: center;
+        color: #102838;
+      }
+      .title span {
+        font-size: 12px;
+        margin-left: 8px;
+      }
+      .my-form {
+        display: flex;
+        margin: 0 16px;
+      }
+      .my-form > input {
+        height: 20px;
+        padding: 4px 8px;
+        font-size: 16px;
+        outline: none;
+        border: 1px solid #90e0ef;
+        flex: 1;
+        margin-right: 8px;
+        border-radius: 8px;
+      }
+      .my-form > input:focus {
+        outline: 1px solid #00b4d8;
+      }
+      .my-form > button {
+        flex: 0;
+        padding: 4px 8px;
+        font-size: 16px;
+        border: 1px solid #00b4d8;
+        border-radius: 8px;
+        background-color: #90e0ef;
+        color: #03045e;
+        transition: transform 0.2s;
+      }
+      .my-form > button:active {
+        transform: scale(1.1);
+      }
+
+      .my-table {
+        width: calc(100% - 32px);
+        margin: 16px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+      .my-table > .table-head {
+        display: flex;
+        height: 30px;
+        background-color: #bee2f2;
+        border-radius: 8px;
+      }
+      .my-table > .table-body {
+        display: flex;
+        flex-direction: column;
+      }
+      .my-table > .table-body > .table-row {
+        height: 30px;
+        display: flex;
+      }
+      .cell a {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
+        white-space: nowrap;
+      }
+      .cell a:hover {
+        text-decoration: underline;
+      }
+      .flex-1 {
+        flex: 1;
+        padding-left: 8px;
+      }
+      .flex-none-100 {
+        flex: none;
+        width: 100px;
+        justify-content: end;
+      }
+      .flex-none-175 {
+        flex: none;
+        width: 175px;
+        justify-content: center;
+      }
+      .cell {
+        overflow: hidden;
+        height: 30px;
+        display: flex;
+        align-items: center;
+      }
+      .h-cell {
+        overflow: hidden;
+        height: 30px;
+        display: flex;
+        align-items: center;
+      }
+      .h-cell.flex-none-100 span {
+        padding-right: 8px;
+      }
+      .cell.flex-none-100 span {
+        padding-right: 25px;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
-      <h1>URL Shrinker</h1>
-      <form action="/shortUrls" method="POST" class="my-4 form-inline">
-        <label for="fullUrl" class="sr-only">Url</label>
+      <h1 class="title">
+        <a href="https://abhiseck.vercel.app/">URL Shortener</a
+        ><span
+          >by
+          <a
+            href="https://abhiseck.vercel.app/"
+            title="Abhiseck Bhattacharya"
+            target="_blank"
+            >Abhiseck</a
+          ></span
+        >
+      </h1>
+      <form action="/shortUrl" method="POST" class="my-form">
         <input
           required
-          placeholder="Url"
+          placeholder="Enter Full URL"
           type="url"
           name="fullUrl"
           id="fullUrl"
@@ -27,8 +149,31 @@
         />
         <button class="btn btn-success" type="submit">Shrink</button>
       </form>
-
-      <table class="table table-striped">
+      <div class="my-table">
+        <div class="table-head">
+          <div class="h-cell flex-1"><span>Full URL</span></div>
+          <div class="h-cell flex-none-175"><span>Short URL</span></div>
+          <div class="h-cell flex-none-100"><span>Clicks</span></div>
+        </div>
+        <div class="table-body">
+          <% shortUrls.forEach(shortUrl => { %>
+          <div class="table-row">
+            <div class="cell flex-1">
+              <a title="<%= shortUrl.full %>" href="<%= shortUrl.full %>"
+                ><%= shortUrl.full %></a
+              >
+            </div>
+            <div class="cell flex-none-175">
+              <a href="<%= shortUrl.short %>"><%= shortUrl.short %></a>
+            </div>
+            <div class="cell flex-none-100">
+              <span><%= shortUrl.clicks %></span>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+      <!-- <table class="my-table">
         <thead>
           <tr>
             <th>Full URL</th>
@@ -45,7 +190,7 @@
           </tr>
           <% }) %>
         </tbody>
-      </table>
+      </table> -->
     </div>
   </body>
 </html>
