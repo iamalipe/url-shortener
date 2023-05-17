@@ -1,4 +1,5 @@
-import "dotenv/config";
+import * as dotenv from "dotenv";
+dotenv.config();
 import express from "express";
 import mongoose from "mongoose";
 import shortUrlModel from "./models/shortUrlModel";
