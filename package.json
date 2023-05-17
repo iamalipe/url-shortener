@@ -11,12 +11,11 @@
   "description": "Large URL into short URL",
   "homepage": "https://abhiseck.vercel.app/",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "dev": "nodemon main.ts",
-    "build": "npx tsc",
-    "start": "node ./dist/main.js",
-    "postinstall": "npm run build"
+    "build": "tsc",
+    "start": "node ./dist/main.js"
   },
   "dependencies": {
     "dotenv": "^16.0.3",
